@@ -1,11 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { FiSend } from "react-icons/fi";
 
 function ChatBoatContainer() {
   const textareaRef = useRef(null);
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hello, How can I help you today?" },
-  ]);
 
   // Function to dynamically resize the textarea
   const handleInput = (e) => {
@@ -13,21 +10,6 @@ function ChatBoatContainer() {
     if (textarea) {
       textarea.style.height = "auto"; // Reset the height
       textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`; // Set new height, max 200px
-    }
-  };
-
-  // Function to handle message submission
-  const handleSendMessage = () => {
-    const textarea = textareaRef.current;
-    if (textarea && textarea.value.trim()) {
-      const userMessage = textarea.value.trim();
-
-      // Add the user message to the messages array
-      setMessages([...messages, { sender: "user", text: userMessage }]);
-
-      // Clear the textarea and reset its height
-      textarea.value = "";
-      textarea.style.height = "50px";
     }
   };
 
@@ -54,21 +36,19 @@ function ChatBoatContainer() {
         </div>
         {/* Chat Messages */}
         <div className="flex px-4 sm:px-16 py-4 flex-col overflow-y-auto space-y-3 flex-grow">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`${
-                message.sender === "bot"
-                  ? "self-start bg-blue-800"
-                  : "self-end bg-gray-600"
-              } text-left text-white p-3 rounded-lg max-w-[80%] sm:max-w-[60%]`}
-            >
-              {message.text}
-            </div>
-          ))}
+          {/* Message example */}
+          <div className="self-start bg-blue-800 text-left text-white p-3 rounded-lg max-w-[80%] sm:max-w-[60%]">
+            Hello, How can I help you today?
+          </div>
+          <div className="self-end bg-gray-600 text-left text-white p-3 rounded-lg max-w-[80%] sm:max-w-[70%]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
         </div>
         {/* Input Area */}
         <div className="p-4 flex gap-2 items-center">
+          {/* Left-side buttons */}
+
           {/* Textarea */}
           <textarea
             ref={textareaRef}
@@ -79,10 +59,7 @@ function ChatBoatContainer() {
             style={{ minHeight: "50px", maxHeight: "200px", overflowY: "auto" }}
           />
           {/* Send button */}
-          <button
-            className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-300"
-            onClick={handleSendMessage}
-          >
+          <button className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-300">
             <FiSend className="w-5 h-5" />
           </button>
         </div>
