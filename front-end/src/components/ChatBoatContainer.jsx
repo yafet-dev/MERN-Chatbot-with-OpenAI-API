@@ -16,11 +16,6 @@ function ChatBoatContainer() {
     }
   };
 
-  // Function to detect code vs text
-  const isCode = (text) => {
-    return text.includes("```"); // Treat messages wrapped in ``` as code
-  };
-
   // Function to handle message submission
   const handleSendMessage = () => {
     const textarea = textareaRef.current;
@@ -66,13 +61,9 @@ function ChatBoatContainer() {
                 message.sender === "bot"
                   ? "self-start bg-blue-800"
                   : "self-end bg-gray-600"
-              } text-left text-white p-3 rounded-lg max-w-[80%] sm:max-w-[60%] ${
-                isCode(message.text) ? "font-mono whitespace-pre-wrap" : ""
-              }`}
+              } text-left text-white p-3 rounded-lg max-w-[80%] sm:max-w-[60%]`}
             >
-              {isCode(message.text)
-                ? message.text.replace(/```/g, "") // Remove ``` for code blocks
-                : message.text}
+              {message.text}
             </div>
           ))}
         </div>
