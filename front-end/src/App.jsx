@@ -1,8 +1,11 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
 
 function App() {
-  return <HomePage />;
+  return (
+    <>
+      <div className="text-xl text-red-500">working</div>
+    </>
+  );
 }
 
 export default App;

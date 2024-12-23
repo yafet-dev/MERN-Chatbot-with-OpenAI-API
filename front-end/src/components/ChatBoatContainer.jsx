@@ -37,7 +37,7 @@ function ChatBoatContainer() {
   };
 
   return (
-    <div className="min-h-screen w-full sm:my-4 p-4 sm:p-12 bg-gradient-to-b flex flex-col items-center justify-center">
+    <div className="min-h-screen w-full p-4 sm:p-12 bg-gradient-to-b flex flex-col items-center justify-center">
       {/* Chatbot Container */}
       <h2 className="my-4 sm:my-8 text-white text-center text-2xl sm:text-4xl font-semibold tracking-tighter">
         What can I help you today?
